@@ -40,6 +40,8 @@ snap_install spotify
 snap_install sublime-text
 snap_install goland
 
+# Oh My ZSH
+git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+
 # Change default shell to zsh
-command -v zsh | sudo tee -a /etc/shells
-sudo chsh -s "$(command -v zsh)" "${USER}"
+sudo chsh -s "$(which zsh)" "${USER}"
