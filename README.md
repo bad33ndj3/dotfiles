@@ -1,3 +1,3 @@
 # dotfiles
 
-run install.sh and copy the .zshrc to ~/.zshrc
+run install.sh for default linux snap's and apt's
