@@ -34,6 +34,7 @@ apt_install wget
 apt_install zsh
 apt_install make
 apt_install google-chrome-stable
+apt_install grub-customizer
 
 snap_install discord
 snap_install spotify
@@ -41,7 +42,6 @@ snap_install sublime-text
 snap_install goland
 
 # Oh My ZSH
+[ ! -f ~/.zshrc ] && cp .zshrc ~/.zshrc
 git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
-
-# Change default shell to zsh
 sudo chsh -s "$(which zsh)" "${USER}"
