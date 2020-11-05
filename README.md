@@ -3,10 +3,11 @@
 A short documentation on how to customise linux, this seemed like the best idea after the 4th complete reinstall!
 
 ### Update Ubuntu and get standard repository programs
+    $ sudo add-apt-repository ppa:wereturtle/ppa && echo "add ghostwriter repository .."
     $ sudo apt update && sudo apt full-upgrade -y
 
 ### Install standard apt packages
-    $ sudo apt install -y curl git openvpn tree vim wget zsh make grub-customizer
+    $ sudo apt install -y curl git openvpn tree vim wget zsh make grub-customizer ghostwriter
 
 ### Snap packages
     $ sudo snap install discord spotify
