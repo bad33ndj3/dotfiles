@@ -21,6 +21,8 @@ A short documentation on how to customise linux, this seemed like the best idea 
 
 ### Set zsh as default shell (log out to complete)
     $ sudo chsh -s "$(which zsh)" "${USER}"
+Logout afterward.
+    
 For autocomple [go here](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md)
     
 # Docs
