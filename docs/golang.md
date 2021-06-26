@@ -7,11 +7,11 @@
 
 ### gopath
 
-    $ mkdir -p ~/go{bin,src,pkg}
+    $ mkdir -p ~/go/{bin,src,pkg}
 
 ### path
 add these to your bashrc
 
-    export GOPATH=$HOME/go
-    export GOROOT=/usr/local/go/bin
-    export PATH=$PATH:$GOROOT:$GOROOT/bin:$GOPATH/bin
+    export GOPATH="$HOME/go"
+    export GOBIN="$GOPATH/bin"
+    export PATH=$PATH:$GOBIN:/usr/local/go/bin
