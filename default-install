@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -eu -o pipefail # fail on error , debug all lines
+
+sudo -n true
+test $? -eq 0 || exit 1 "you should have sudo priveledge to run this script"
+
+mkdir tmp && cd tmp
+
+LIST_OF_APPS="curl git openvpn tree vim wget zsh make"
+
+apt-get update
+apt-get install -y $LIST_OF_APPS
+
+# install chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+yes | apt install ./google-chrome-stable_current_amd64.deb
+
+# install docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+yes | sh get-docker.sh
+
+# clean up
+cd ..
+rm -rf tmp
+
+# install zsh
+yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

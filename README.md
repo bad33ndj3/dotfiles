@@ -1,6 +1,8 @@
 # dotfiles
 
-A short documentation on how to customise linux, this seemed like the best idea after the 4th complete reinstall!
+Helper repo for my linux packages and software
+
+    $ ./default-install
 
 ### Update Ubuntu
     $ sudo apt update && sudo apt full-upgrade -y
