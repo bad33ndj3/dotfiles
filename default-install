@@ -1,28 +1,52 @@
 #!/bin/bash
 
-set -eu -o pipefail # fail on error , debug all lines
-
 sudo -n true
-test $? -eq 0 || exit 1 "you should have sudo priveledge to run this script"
+test $? -eq 0 || exit 1 "you should have sudo privilege to run this script"
 
-mkdir tmp && cd tmp
+red_echo() {
+    echo -e "\x1b[1;31m $1\e[0m" && sleep 2
+}
+green_echo() {
+    echo -e "\x1b[1;32m $1\e[0m" && sleep 2
+}
 
-LIST_OF_APPS="curl git openvpn tree vim wget zsh make"
+# create tempdir for downloading and easy cleanup
+mkdir tmpdir && cd tmpdir || exit 1 "failed to create tmpdir"
 
+LIST_OF_APPS="curl git openvpn tree vim wget zsh make apt-utils"
+green_echo "installing apt-get packages (${LIST_OF_APPS})"
 apt-get update
 apt-get install -y $LIST_OF_APPS
 
-# install chrome
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-yes | apt install ./google-chrome-stable_current_amd64.deb
+GOVERSION=$(curl https://golang.org/VERSION?m=text)
+green_echo "installing golang version: ${GOVERSION}"
+wget "https://dl.google.com/go/${GOVERSION}.linux-amd64.tar.gz"
+sudo tar -xvf "${GOVERSION}.linux-amd64.tar.gz" -C /usr/local/
+
+if [[ -z ${XDG_CURRENT_DESKTOP+x} ]]; then
+  red_echo "no GUI found on this environment (skipping chrome)"
+else
+    # install chrome
+  green_echo "installing chrome"
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  apt install -y ./google-chrome-stable_current_amd64.deb
+fi
 
 # install docker
+green_echo "installing docker"
 curl -fsSL https://get.docker.com -o get-docker.sh
 yes | sh get-docker.sh
 
 # clean up
+green_echo "cleaning up temp dir"
 cd ..
 rm -rf tmp
 
 # install zsh
+green_echo "installing ZSH"
 yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+yes | git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+red_echo "dont forget to enable zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md"
+
+red_echo "dont forget to add golang env's to ~/.zshrc"
+green_echo "successfully finished installing, checkout https://github.com/bad33ndj3/dotfiles for more information"
