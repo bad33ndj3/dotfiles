@@ -2,7 +2,7 @@
 
 Helper repo for my linux packages and software
 
-    $ ./default-install
+    $ https://raw.githubusercontent.com/bad33ndj3/dotfiles/master/default-install | bash
 
 ### Update Ubuntu
     $ sudo apt update && sudo apt full-upgrade -y
