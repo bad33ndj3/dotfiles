@@ -1,9 +1,7 @@
 # dotfiles
 
-Helper repo for my linux packages and software
-
-    $ https://raw.githubusercontent.com/bad33ndj3/dotfiles/master/default-install | bash
+This is my personal dotfiles repository. It is a work in progress and will be updated as I go along.
     
 # Docs
-- [golang](docs/golang.md)
-- [default-install](docs/default-install.md)
+- [go](docs/go.md)
+- [bartender](docs/bartender.md)
