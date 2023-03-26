@@ -5,3 +5,4 @@ This is my personal dotfiles repository. It is a work in progress and will be up
 # Docs
 - [go](docs/go.md)
 - [bartender](docs/bartender.md)
+- [zsh](docs/zsh.md)
